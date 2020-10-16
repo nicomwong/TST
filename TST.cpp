@@ -219,6 +219,15 @@ void TST::postOrder()
     postOrderRecurs(this->root);
 }
 
+// Make a new node with key as left and return it
+Node* TST::createNode(std::string key)
+{
+    Node* n = new Node;
+    n->left.key = key;
+    n->left.count = 1;
+    return n;
+}
+
 // Prints all keys from lo to hi, double inclusive, in-order with root node n
 void TST::rangeSearchRecurs(std::string const& lo, std::string const& hi, Node* n)
 {
@@ -338,13 +347,4 @@ void TST::postOrderRecurs(Node* n)
         std::string const& right = n->right.key + ", " + std::to_string(n->right.count);
         std::cout << right << std::endl;
     }
-}
-
-// Make a new node with key as left and return it
-Node* TST::createNode(std::string key)
-{
-    Node* n = new Node;
-    n->left.key = key;
-    n->left.count = 1;
-    return n;
 }
