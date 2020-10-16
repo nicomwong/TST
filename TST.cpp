@@ -158,5 +158,35 @@ void TST::inOrderRecurs(Node* n)
 // Prints all keys pre-order
 void TST::preOrder()
 {
+    preOrderRecurs(this->root);
+}
+
+// Prints all keys pre-order with root n
+void TST::preOrderRecurs(Node* n)
+{
+    if (n == nullptr)
+    {
+        return;
+    }
+
+    else
+    {
+        // Print left key and count
+        std::string const& left = n->left.key + ", " + std::to_string(n->left.count);
+        std::cout << left << std::endl;
+        
+        // Print right key and count
+        std::string const& right = n->right.key + ", " + std::to_string(n->right.count);
+        std::cout << right << std::endl;
+
+        // Print left subtree
+        preOrderRecurs(n->leftChild);
+
+        // Print middle subtree
+        preOrderRecurs(n->midChild);
+
+        // Print right subtree
+        preOrderRecurs(n->rightChild);
+    }
     
 }
