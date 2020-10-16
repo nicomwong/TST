@@ -45,9 +45,10 @@ public:
 private:
     Node* root;
 
+    // Function helpers
     Node* createNode(std::string key); // Make a new node with key
 
-    // Test function helpers
+    void rangeSearchRecurs(std::string const& lo, std::string const& hi, Node* n);    // Prints all keys from lo to hi, double inclusive, in-order from root node n
     void inOrderRecurs(Node* n);    // Prints all keys in-order from root node n
     void preOrderRecurs(Node* n);   // Prints all keys pre-order from root node n
     void postOrderRecurs(Node* n);  // Prints all keys post-order from root node n
