@@ -190,3 +190,39 @@ void TST::preOrderRecurs(Node* n)
     }
     
 }
+
+// Prints all keys post-order
+void TST::postOrder()
+{
+    postOrderRecurs(this->root);
+}
+
+// Prints all keys post-order with root n
+void TST::postOrderRecurs(Node* n)
+{
+    if (n == nullptr)
+    {
+        return;
+    }
+
+    else
+    {
+        // Print left subtree
+        postOrderRecurs(n->leftChild);
+
+        // Print middle subtree
+        postOrderRecurs(n->midChild);
+
+        // Print right subtree
+        postOrderRecurs(n->rightChild);
+
+        // Print left key and count
+        std::string const& left = n->left.key + ", " + std::to_string(n->left.count);
+        std::cout << left << std::endl;
+        
+        // Print right key and count
+        std::string const& right = n->right.key + ", " + std::to_string(n->right.count);
+        std::cout << right << std::endl;
+    }
+    
+}
