@@ -15,7 +15,7 @@ TST::~TST()
     // TO IMPLEMENT: Clear memory
 }
 
-// Make a new node with key and return it
+// Make a new node with key as left and return it
 Node* TST::createNode(std::string key)
 {
     Node* n = new Node;
@@ -30,9 +30,8 @@ Node* TST::insert(std::string key)
     // If no root, then make a root node with the key
     if (this->root == nullptr)
     {
-        Node* n = new Node;
         this->root = createNode(key);
-        return n;
+        return this->root;
     }
 
     // Start at root, ternary search to find insertion position
@@ -61,7 +60,6 @@ Node* TST::insert(std::string key)
             // Set right key and count
             n->right.key = key;
             n->right.count = 1;
-            return n;
 
             // If the left key is greater than the key, then swap left and right
             if (n->left.key > key)
@@ -70,6 +68,8 @@ Node* TST::insert(std::string key)
                 std::swap(n->left.key, n->right.key);
                 std::swap(n->left.count, n->right.count);
             }
+
+            return n;
         }
 
         // Else, determine whether to traverse to left, middle, or right child
