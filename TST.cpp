@@ -12,7 +12,7 @@ TST::TST() : root(nullptr)
 // Destructor
 TST::~TST()
 {
-    // TO IMPLEMENT: Clear memory
+    destroyTree(this->root);
 }
 
 // Prints out 'key found, count = x' if key is found; else, 'key not found'
@@ -226,6 +226,27 @@ Node* TST::createNode(std::string key)
     n->left.key = key;
     n->left.count = 1;
     return n;
+}
+
+// Destructor helper; deletes memory (post-order) from tree with root n
+void TST::destroyTree(Node* n)
+{
+    if (n == nullptr)
+    {
+        return;
+    }
+
+    else
+    {
+        // Delete left, mid, and right subtrees
+        destroyTree(n->leftChild);
+        destroyTree(n->midChild);
+        destroyTree(n->rightChild);
+
+        // Delete this node
+        delete n;
+    }
+    
 }
 
 // Prints all keys from lo to hi, double inclusive, in-order with root node n
