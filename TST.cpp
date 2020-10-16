@@ -195,6 +195,12 @@ Node* TST::insert(std::string key)
     }
 }
 
+// Prints all keys from m to n, double inclusive, in-order
+void TST::rangeSearch(std::string low, std::string high)
+{
+    rangeSearchRecurs(low, high, this->root);
+}
+
 // Prints all keys in-order
 void TST::inOrder()
 {
@@ -211,6 +217,39 @@ void TST::preOrder()
 void TST::postOrder()
 {
     postOrderRecurs(this->root);
+}
+
+// Prints all keys from lo to hi, double inclusive, in-order with root node n
+void TST::rangeSearchRecurs(std::string const& lo, std::string const& hi, Node* n)
+{
+    if (n == nullptr)
+    {
+        return;
+    }
+
+    else
+    {
+        // Print the left subtree
+        rangeSearchRecurs(lo, hi, n->leftChild);
+
+        // If the left key is in the range, then print it
+        if (lo <= n->left.key && n->left.key <= hi)
+        {
+            std::cout << n->left.key << std::endl;
+        }
+
+        // Print the middle subtree
+        rangeSearchRecurs(lo, hi, n->midChild);
+
+        // If the right key is in the range, then print it
+        if (lo <= n->right.key && n->right.key <= hi)
+        {
+            std::cout << n->right.key << std::endl;
+        }
+
+        // Print the right subtree
+        rangeSearchRecurs(lo, hi, n->rightChild);
+    }
 }
 
 // Prints all keys in-order with root node n
