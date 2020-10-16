@@ -201,6 +201,18 @@ void TST::inOrder()
     inOrderRecurs(this->root);
 }
 
+// Prints all keys pre-order
+void TST::preOrder()
+{
+    preOrderRecurs(this->root);
+}
+
+// Prints all keys post-order
+void TST::postOrder()
+{
+    postOrderRecurs(this->root);
+}
+
 // Prints all keys in-order with root node n
 void TST::inOrderRecurs(Node* n)
 {
@@ -228,12 +240,6 @@ void TST::inOrderRecurs(Node* n)
         // Print right subtree
         inOrderRecurs(n->rightChild);
     }
-}
-
-// Prints all keys pre-order
-void TST::preOrder()
-{
-    preOrderRecurs(this->root);
 }
 
 // Prints all keys pre-order with root n
@@ -264,12 +270,6 @@ void TST::preOrderRecurs(Node* n)
         preOrderRecurs(n->rightChild);
     }
     
-}
-
-// Prints all keys post-order
-void TST::postOrder()
-{
-    postOrderRecurs(this->root);
 }
 
 // Prints all keys post-order with root n
