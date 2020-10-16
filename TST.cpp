@@ -15,13 +15,88 @@ TST::~TST()
     // TO IMPLEMENT: Clear memory
 }
 
-// Make a new node with key as left and return it
-Node* TST::createNode(std::string key)
+// Prints out 'key found, count = x' if key is found; else, 'key not found'
+void TST::lookup(std::string key)
 {
-    Node* n = new Node;
-    n->left.key = key;
-    n->left.count = 1;
-    return n;
+    Node* n = find(key);
+    if (n == nullptr)
+    {
+        // Print 'key not found'
+        std::cout << key << " not found" << std::endl;
+    }
+
+    else
+    {
+        // Determine which key was the one found
+        int count = n->left.key == key ? n->left.count : n->right.count;
+
+        // Print 'key found, count = x'
+        std::cout << key << " found, count = " << count << std::endl;
+    }
+}
+
+// Prints out 'key inserted, new count = x' once key is inserted
+void TST::insertPrint(std::string key)
+{
+    Node* n = insert(key);
+    if (n == nullptr)
+    {
+        // Print error message that insert() shouldn't return nullptr
+        std::cerr << "----ERROR: insert(\"" << key << "\") returned nullptr" << std::endl;
+    }
+
+    else
+    {
+        // Determine which key was the one inserted
+        int count = n->left.key == key ? n->left.count : n->right.count;
+
+        // Print 'key inserted, new count = x'
+        std::cout << key << " inserted, new count = " << count << std::endl;
+    }
+    
+}
+
+// Finds the node with key
+Node* TST::find(std::string key)
+{
+    // Start at the root node
+    Node* n = this->root;
+
+    // Traverse down the tree, moving left, mid, or right depending on key values until it is found (or not found)
+    while (n != nullptr)
+    {
+        // If key is in this node, return the node
+        if (n->left.key == key || n->right.key == key)
+        {
+            return n;
+        }
+
+        // Else, determine which child to traverse
+        else
+        {
+            // If key is less than left key, then go to left child
+            if (key < n->left.key)
+            {
+                n = n->leftChild;
+            }
+
+            // Else if key is less than right key, then go to middle child
+            else if (key < n->right.key)
+            {
+                n = n->midChild;
+            }
+
+            // Else, go to right child
+            else
+            {
+                n = n->rightChild;
+            }
+        }
+    }
+
+    // This line is reached once n == nullptr
+    // Means that there are no nodes left to search
+    return nullptr;
 }
 
 // Insert key
@@ -224,5 +299,13 @@ void TST::postOrderRecurs(Node* n)
         std::string const& right = n->right.key + ", " + std::to_string(n->right.count);
         std::cout << right << std::endl;
     }
-    
+}
+
+// Make a new node with key as left and return it
+Node* TST::createNode(std::string key)
+{
+    Node* n = new Node;
+    n->left.key = key;
+    n->left.count = 1;
+    return n;
 }
