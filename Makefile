@@ -1,6 +1,6 @@
 CXX = g++
 
-CXXFLAGS = #-std=c++11
+CXXFLAGS = -std=c++11
 
 BINARIES = TSTTest
 
@@ -11,7 +11,7 @@ TSTTest: main.o TST.o
 	${CXX} ${CXXFLAGS} $^ -o $@
 
 main.o: main.cpp
-	${CXX} ${CXXFLAGS} -std=c++11 -c $^
+	${CXX} ${CXXFLAGS} -c $^
 
 TST.o: TST.cpp
 	${CXX} ${CXXFLAGS} -c $^
