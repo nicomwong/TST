@@ -46,6 +46,8 @@ private:
     Node* root;
 
     // Function helpers
+    void destroyTree(Node* n);  // Destructor helper; deletes memory from tree with root n
+
     Node* createNode(std::string key); // Make a new node with key
 
     void rangeSearchRecurs(std::string const& lo, std::string const& hi, Node* n);    // Prints all keys from lo to hi, double inclusive, in-order from root node n
