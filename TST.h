@@ -29,10 +29,15 @@ public:
     TST();  // Constructor
     ~TST(); // Destructor
 
-    Node* insert(std::string key);  // Inserts key to tree
-    void deleteKey(std::string key);    // Deletes key from tree
+    void lookup(std::string key); // Prints 'key found, count = x' if found; else, 'key not found'
+    void insertPrint(std::string key);    // Prints 'key inserted, new count = x' once key is inserted
+    void deletePrint(std::string key);    // Prints 'key deleted, new count = x' if count was previously > 1; else, 'key deleted'
     void rangeSearch(std::string low, std::string high);    // Prints all keys in-order from low to high, double inclusive
 
+    Node* find(std::string key);    // Finds node with key
+    Node* insert(std::string key);  // Inserts key to tree
+    void deleteKey(std::string key);    // Deletes key from tree
+    
     // Test functions
     void inOrder(); // Prints all keys in-order
     void preOrder();    // Prints all keys pre-order
@@ -41,7 +46,7 @@ private:
     Node* root;
 
     Node* createNode(std::string key); // Make a new node with key
-    
+
     // Test function helpers
     void inOrderRecurs(Node* n);    // Prints all keys in-order from root node n
     void preOrderRecurs(Node* n);   // Prints all keys pre-order from root node n
