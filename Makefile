@@ -8,7 +8,7 @@ test: TSTTest
 	./$^
 
 TSTTest: main.o TST.o
-	${CXX} ${CXXFLAGS} $^ -o $@
+	${CXX} ${CXXFLAGS} -g $^ -o $@
 
 main.o: main.cpp
 	${CXX} ${CXXFLAGS} -c $^
