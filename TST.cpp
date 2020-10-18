@@ -56,6 +56,19 @@ void TST::insertPrint(std::string key)
     
 }
 
+// Prints 'key deleted, new count = x' if count > 1; else, 'key deleted'; after deleting
+void TST::deletePrint(std::string key)
+{
+    // Delete key from root then set the new root
+    this->root = deleteKey(key, this->root, true);
+}
+
+// Prints all keys from m to n, double inclusive, in-order
+void TST::rangeSearch(std::string low, std::string high)
+{
+    rangeSearchRecurs(low, high, this->root);
+}
+
 // Finds the node with key
 Node* TST::find(std::string key)
 {
@@ -193,19 +206,6 @@ Node* TST::insert(std::string key)
             }
         }
     }
-}
-
-// Prints 'key deleted, new count = x' if count > 1; else, 'key deleted'; after deleting
-void TST::deletePrint(std::string key)
-{
-    // Delete key from root then set the new root
-    this->root = deleteKey(key, this->root, true);
-}
-
-// Prints all keys from m to n, double inclusive, in-order
-void TST::rangeSearch(std::string low, std::string high)
-{
-    rangeSearchRecurs(low, high, this->root);
 }
 
 // Prints all keys in-order
