@@ -37,7 +37,6 @@ public:
 
     Node* find(std::string key);    // Finds node with key
     Node* insert(std::string key);  // Inserts key to tree
-    void deleteKey(std::string key);    // Deletes key from tree
     
     // Test functions
     void inOrder(); // Prints all keys in-order
@@ -49,7 +48,12 @@ private:
     // Function helpers
     void destroyTree(Node* n);  // Destructor helper; deletes memory from tree with root n
 
-    Node* createNode(std::string key); // Make a new node with key
+    Node* deleteKey(std::string key, Node* n, bool isFirstDelete = false);    // Deletes key from tree with root n and returns the new root
+                                                                            // If the isFirstDelete flag is true, then the whole NodeKey is reset/deleted no matter its count
+    void printKeyDeleted(NodeKey const& nk, bool fullyDeleted);    // If the fullyDeleted flag is true, then prints 'key deleted'; else, prints 'key deleted, new count = x'
+
+    NodeKey findMin(Node* n);   // Finds the minimum key from tree with root n
+    NodeKey findMax(Node* n);   // Finds the maximum key from tree with root ns
 
     void rangeSearchRecurs(std::string const& lo, std::string const& hi, Node* n);    // Prints all keys from lo to hi, double inclusive, in-order from root node n
     void inOrderRecurs(Node* n);    // Prints all keys in-order from root node n
