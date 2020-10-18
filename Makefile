@@ -2,7 +2,7 @@ CXX = g++
 
 CXXFLAGS = -std=c++11 -Wall
 
-BINARIES = TSTTest
+BINARIES = TSTTest project1.out
 
 project1.out: TST.o main.o
 	${CXX} ${CXXFLAGS} -g $^ -o $@
