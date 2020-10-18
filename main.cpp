@@ -1,4 +1,6 @@
 // main.cpp
+// UCSB CS 130A FALL 2020
+// Nicholas M Wong
 
 #include "TST.h"
 
@@ -38,6 +40,7 @@ int main(int argc, char* argv[])
         commandsVect.push_back(command);
     }
 
+    // Run each command
     for (std::string command : commandsVect)
     {
         std::stringstream ss2(command); // Put command into ss2
