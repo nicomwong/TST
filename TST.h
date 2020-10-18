@@ -8,8 +8,8 @@ struct NodeKey
     NodeKey() : key(""), count(0) {}    // Default Constructor
     NodeKey(std::string key, int count) : key(key), count(count) {} // Parameterized Constructor
 
-    std::string key/* = ""*/;
-    int count/* = 0*/;
+    std::string key;
+    int count;
 };
 
 struct Node
@@ -19,9 +19,9 @@ struct Node
     NodeKey left;
     NodeKey right;
 
-    Node* leftChild/* = nullptr*/;
-    Node* midChild/* = nullptr*/;
-    Node* rightChild/* = nullptr*/;
+    Node* leftChild;
+    Node* midChild;
+    Node* rightChild;
 };
 
 class TST
