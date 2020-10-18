@@ -167,7 +167,7 @@ int main(int argc, char* argv[])
     if (argc != 2)
     {
         std::cout << "Usage: ./TSTTest testName" << std::endl;
-        return 0;
+        return -1;
     }
 
     std::string testName = argv[1];
@@ -196,5 +196,5 @@ int main(int argc, char* argv[])
         testDestructor();
     }
 
-    return 1;
+    return 0;
 }
