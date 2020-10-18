@@ -5,7 +5,8 @@
 
 struct NodeKey
 {
-    NodeKey() : key(""), count(0) {}    // Constructor
+    NodeKey() : key(""), count(0) {}    // Default Constructor
+    NodeKey(std::string key, int count) : key(key), count(count) {} // Parameterized Constructor
 
     std::string key/* = ""*/;
     int count/* = 0*/;
