@@ -219,15 +219,6 @@ void TST::postOrder()
     postOrderRecurs(this->root);
 }
 
-// Make a new node with key as left and return it
-Node* TST::createNode(std::string key)
-{
-    Node* n = new Node;
-    n->left.key = key;
-    n->left.count = 1;
-    return n;
-}
-
 // Destructor helper; deletes memory (post-order) from tree with root n
 void TST::destroyTree(Node* n)
 {
@@ -368,4 +359,13 @@ void TST::postOrderRecurs(Node* n)
         std::string const& right = n->right.key + ", " + std::to_string(n->right.count);
         std::cout << right << std::endl;
     }
+}
+
+// Make a new node with key as left and return it
+Node* TST::createNode(std::string key)
+{
+    Node* n = new Node;
+    n->left.key = key;
+    n->left.count = 1;
+    return n;
 }
