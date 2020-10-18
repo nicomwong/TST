@@ -4,7 +4,8 @@ CXXFLAGS = -std=c++11 -Wall
 
 BINARIES = TSTTest
 
-main: #for the final product
+project1.out: TST.o main.o
+	${CXX} ${CXXFLAGS} -g $^ -o $@
 
 testEmpty: TSTTest
 	./$^ "empty"
