@@ -170,7 +170,7 @@ Node* TST::insert(std::string key)
                 if (n->leftChild == nullptr)
                 {
                     n->leftChild = createNode(key);
-                    return n;
+                    return n->leftChild;
                 }
 
                 // Else
@@ -184,7 +184,7 @@ Node* TST::insert(std::string key)
                 if (n->midChild == nullptr)
                 {
                     n->midChild = createNode(key);
-                    return n;
+                    return n->midChild;
                 }
 
                 // Else
@@ -198,7 +198,7 @@ Node* TST::insert(std::string key)
                 if (n->rightChild == nullptr)
                 {
                     n->rightChild = createNode(key);
-                    return n;
+                    return n->rightChild;
                 }
 
                 // Else
